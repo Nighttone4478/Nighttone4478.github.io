@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Dashboard</title>
+    <link rel="stylesheet" href="style.css"> <!-- 引入樣式檔案 -->
+</head>
+<body>
+    <h1>IoT Dashboard</h1>
+    
+    <!-- 1. 鎖的狀態顯示 -->
+    <div id="lock-status">
+        <p>鎖狀態：<span id="lock-state">未知</span></p>
+    </div>
+
+    <!-- 2. 解鎖按鈕 -->
+    <button id="unlock-button">解鎖</button>
+
+    <!-- 3. 密碼輸入框 -->
+    <div>
+        <input type="number" id="password-input" placeholder="輸入密碼">
+        <button id="submit-password">提交密碼</button>
+    </div>
+
+    <!-- 4. 註冊指紋功能 -->
+    <button id="register-fingerprint">註冊指紋</button>
+
+    <!-- 5. 模型訓練選擇 -->
+    <button id="choose-upload">選擇上傳或拍照</button>
+
+    <!-- 上傳 / 拍照選擇框 -->
+    <div id="upload-options" style="display: none;">
+        <button id="file-upload-btn">上傳檔案</button>
+        <button id="capture-photo-btn">拍照訓練</button>
+    </div>
+
+    <button id="train-model" style="display: none;">開始訓練</button>
+
+
+    <!-- 6. 即時訊息顯示 -->
+    
+    <h2>ESP32 訊息</h2>
+    <textarea id="esp-messages" rows="10" cols="30" readonly></textarea>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script> <!-- TensorFlow.js -->
+    <script src="script.js"></script> <!-- 引入功能檔案 -->
+</body>
+</html>
