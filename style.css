@@ -1,0 +1,132 @@
+/* 全域設置 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9; /* 柔和的背景色 */
+    margin: 0;
+    padding: 0;
+    color: #333; /* 深灰文字 */
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* 頁面標題 */
+h1 {
+    background-color: #1f3b4d; /* 深藍背景 */
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    margin: 0;
+}
+
+/* 區域樣式 */
+section {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin: 1rem;
+    width: 90%; /* 隨視窗寬度調整 */
+    max-width: 500px; /* 在桌面環境限制最大寬度 */
+    box-sizing: border-box;
+}
+
+/* 按鈕樣式 */
+button {
+    background-color: #1f3b4d; /* 深藍背景 */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    width: 90%; /* 隨視窗寬度調整 */
+    max-width: 300px; /* 在桌面環境限制最大寬度 */
+    font-size: 1rem;
+    margin-bottom: 5px; /* 上下間距 */
+}
+
+button:hover {
+    background-color: #3c6e91; /* 輕微變亮的效果 */
+}
+
+/* 密碼輸入框與按鈕的排版 */
+#password-input {
+    width: calc(70% - 10px); /* 輸入框佔 70% 的寬度，留出按鈕空間 */
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+#submit-password {
+    width: calc(30% - 10px); /* 提交按鈕佔 30% 的寬度 */
+    margin-left: 10px;
+    padding: 0.5rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* 文字區塊樣式 */
+textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    resize: none;
+}
+
+/* 響應式設計 */
+@media (max-width: 600px) {
+    section {
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    button, input[type="number"], textarea {
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+/* 隱藏數字輸入框的上下箭頭 */
+input[type="number"] {
+    -moz-appearance: textfield; /* Firefox 隱藏箭頭 */
+    -webkit-appearance: none; /* Chrome/Edge 隱藏箭頭 */
+    appearance: none; /* 標準屬性 */
+}
+
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* 移除 Webkit 的上下箭頭 */
+    margin: 0; /* 確保樣式一致 */
+}
+
+/* 其他元素的樣式和排列 */
+div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* 即時訊息顯示 */
+#esp-messages {
+    width: 100%;
+    max-width: 600px;
+    height: 150px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
