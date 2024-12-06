@@ -1,4 +1,3 @@
-require('dotenv').config();
 // 初始化 DOM 元素
 const lockStateElement = document.getElementById('lock-state'); //鎖狀態 文字
 const unlockButton = document.getElementById('unlock-button'); // 解鎖按鈕
@@ -9,13 +8,8 @@ const espMessages = document.getElementById('esp-messages'); //顯示訊息框
 
 // Adafruit IO 配置
 const AIO_USERNAME = 'Nighttone';
-const AIO_KEY = process.env.AIO_KEY;
-console.log(AIO_KEY);
+const AIO_KEY = atob("YWlvX1FDd0MzOUp6d3VIYXJzQWdrVHU5RWhtNEJmeE8=");
 const BASE_URL = `https://io.adafruit.com/api/v2/${AIO_USERNAME}/feeds/`;
-
-//  https://io.adafruit.com/api/v2/Nighttone/feeds?x-aio-key=aio_amsK77DwmMaBinaFqpD3GV2tFcnQ/data
-//  https://io.adafruit.com/api/v2/Nighttone/feeds/door-password/data/last?x-aio-key=aio_iZeL12Apeq9B8JlHdmpl9brPXqHT
-
 
 // 每 0.5 秒 查詢鎖的狀態  OK
 async function fetchLockState() {
