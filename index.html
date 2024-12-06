@@ -26,24 +26,11 @@
     <!-- 4. 註冊指紋功能 -->
     <button id="register-fingerprint">註冊指紋</button>
 
-    <!-- 5. 模型訓練選擇 -->
-    <button id="choose-upload">選擇上傳或拍照</button>
-
-    <!-- 上傳 / 拍照選擇框 -->
-    <div id="upload-options" style="display: none;">
-        <button id="file-upload-btn">上傳檔案</button>
-        <button id="capture-photo-btn">拍照訓練</button>
-    </div>
-
-    <button id="train-model" style="display: none;">開始訓練</button>
-
-
-    <!-- 6. 即時訊息顯示 -->
+    <!-- 5. 即時訊息顯示 -->
     
     <h2>ESP32 訊息</h2>
     <textarea id="esp-messages" rows="10" cols="30" readonly></textarea>
 
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script> <!-- TensorFlow.js -->
     <script src="script.js"></script> <!-- 引入功能檔案 -->
 </body>
 </html>
