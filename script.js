@@ -8,11 +8,11 @@ const espMessages = document.getElementById('esp-messages'); //顯示訊息框
 
 // Adafruit IO 配置
 const AIO_USERNAME = 'Nighttone';
-const AIO_KEY = 'aio_amsK77DwmMaBinaFqpD3GV2tFcnQ';
+const AIO_KEY = 'aio_tuyD05ksBOvhdv9ZezepcdwtBUco';
 const BASE_URL = `https://io.adafruit.com/api/v2/${AIO_USERNAME}/feeds/`;
 
 //  https://io.adafruit.com/api/v2/Nighttone/feeds?x-aio-key=aio_amsK77DwmMaBinaFqpD3GV2tFcnQ/data
-//  https://io.adafruit.com/api/v2/Nighttone/feeds/door-password/data/last?x-aio-key=aio_amsK77DwmMaBinaFqpD3GV2tFcnQ
+//  https://io.adafruit.com/api/v2/Nighttone/feeds/door-password/data/last?x-aio-key=aio_tuyD05ksBOvhdv9ZezepcdwtBUco
 
 
 // 每 0.5 秒 查詢鎖的狀態  OK
