@@ -5,10 +5,11 @@ const passwordInput = document.getElementById('password-input'); // 輸入文字
 const submitPasswordButton = document.getElementById('submit-password'); // 上傳密碼
 const registerFingerprintButton = document.getElementById('register-fingerprint'); //註冊指紋按鈕
 const espMessages = document.getElementById('esp-messages'); //顯示訊息框
+const openfacepage = document.getElementById('face-page') // 開啟人臉辨識頁面
 
 // Adafruit IO 配置
 const AIO_USERNAME = 'Nighttone';
-const AIO_KEY = atob("YWlvX1FDd0MzOUp6d3VIYXJzQWdrVHU5RWhtNEJmeE8=");
+const AIO_KEY = atob("YWlvX3BTeU8zMjdkSGlYcGowODhPY204VFJ3SVBBQ00=");
 const BASE_URL = `https://io.adafruit.com/api/v2/${AIO_USERNAME}/feeds/`;
 
 // 每 0.5 秒 查詢鎖的狀態  OK
@@ -103,9 +104,20 @@ registerFingerprintButton.addEventListener('click', async () => {
             'X-AIO-Key': AIO_KEY,
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ value: '1' })
+        body: JSON.stringify({ value: "1" })
     });
     alert('指紋註冊模式啟動！');
+});
+
+openfacepage.addEventListener('click', () => {
+    // 記錄當前頁面的 URL
+    const currentPageUrl = window.location.href;
+
+    // 確保在網路和本地環境都能跳轉
+    const newPageUrl = `${window.location.origin}${window.location.pathname.replace('index.html', 'face_page.html')}`;
+
+    // 跳轉到新功能頁面，並傳遞當前頁面 URL
+    window.location.href = `${newPageUrl}?returnUrl=${encodeURIComponent(currentPageUrl)}`;
 });
 
 // 用來保存上一條訊息的時間

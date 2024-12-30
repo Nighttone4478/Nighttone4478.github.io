@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人臉辨識選單</title>
+    <link rel="stylesheet" href="style.css"> <!-- 引入樣式檔案 -->
+</head>
+<body>
+    <h1>人臉辨識選單</h1>
+    <br>
+    <!-- 照片上傳區域 -->
+    <section id="photo-upload-section">
+        <h2>上傳圖片</h2>
+        <div class="button-group">
+            <!-- 檔案選擇器 -->
+            <input type="file" id="photo-input" accept="image/*" multiple style="display: none;">
+            <!-- 觸發檔案選擇的按鈕 -->
+            <button id="select-photo-button">選擇照片</button>
+        </div>
+        <div class="action-buttons">
+            <!-- 取消選擇按鈕 -->
+            <button id="clear-selection-button">取消選擇</button>
+            <!-- 上傳按鈕 -->
+            <button id="upload-photo-button">上傳圖片</button>
+        </div>
+        <!-- 顯示已選擇的照片名稱 -->
+        <p id="photo-name"></p>
+    </section>
+    
+
+    <button id="train-module-button">訓練模組</button>
+
+    <!-- 返回主頁按鈕 -->
+    <button id="return-button">返回主頁</button>
+
+    <script src="face_script.js"></script> <!-- 引入 JavaScript 檔案 -->
+</body>
+</html>
