@@ -110,14 +110,7 @@ registerFingerprintButton.addEventListener('click', async () => {
 });
 
 openfacepage.addEventListener('click', () => {
-    // 記錄當前頁面的 URL
-    const currentPageUrl = window.location.href;
-
-    // 確保在網路和本地環境都能跳轉
-    const newPageUrl = `${window.location.origin}${window.location.pathname.replace('index.html', 'face_page.html')}`;
-
-    // 跳轉到新功能頁面，並傳遞當前頁面 URL
-    window.location.href = `${newPageUrl}?returnUrl=${encodeURIComponent(currentPageUrl)}`;
+    window.location.href = './face_page.html';
 });
 
 // 用來保存上一條訊息的時間

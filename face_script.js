@@ -45,14 +45,6 @@ document.getElementById('train-module-button').addEventListener('click', () => {
     alert('新功能2已啟用');
 });
 
-// 返回主頁邏輯
-const urlParams = new URLSearchParams(window.location.search);
-const returnUrl = urlParams.get('returnUrl');
-
 document.getElementById('return-button').addEventListener('click', () => {
-    if (returnUrl) {
-        window.location.href = returnUrl; // 跳轉回原頁面
-    } else {
-        alert('無法返回，缺少原頁面 URL');
-    }
+    window.location.href = './index.html'; // 跳轉回原頁面
 });
