@@ -46,5 +46,5 @@ document.getElementById('train-module-button').addEventListener('click', () => {
 });
 
 document.getElementById('return-button').addEventListener('click', () => {
-    window.location.href = './index.html'; // 跳轉回原頁面
+    window.location.href = '../index.html'; // 跳轉回原頁面
 });

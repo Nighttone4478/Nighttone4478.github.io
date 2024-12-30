@@ -110,7 +110,7 @@ registerFingerprintButton.addEventListener('click', async () => {
 });
 
 openfacepage.addEventListener('click', () => {
-    window.location.href = './face_page.html';
+    window.location.href = './face/index.html';
 });
 
 // 用來保存上一條訊息的時間
