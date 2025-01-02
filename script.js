@@ -111,21 +111,15 @@ registerFingerprintButton.addEventListener('click', async () => {
 
 // 訓練模型
 facetrain.addEventListener('click', async () => {
-    try {
-        const response = await fetch('https://face-recognition-app-nh3z.onrender.com/update_model', {
-            method: 'POST',
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const result = await response.json();
-        alert( `成功回應: ${JSON.stringify(result)}`);
-    } catch (error) {
-        alert( `請求失敗: ${error.message}` );
-    }
-
+    await fetch(`${BASE_URL}/door-enrollface/data`, {
+        method: 'POST',
+        headers: {
+            'X-AIO-Key': AIO_KEY,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ value: "1" })
+    });
+    alert('已發送人臉辨識註冊請求!');
 });
 
 // 用來保存上一條訊息的時間
