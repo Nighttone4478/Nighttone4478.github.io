@@ -5,7 +5,7 @@ const passwordInput = document.getElementById('password-input'); // 輸入文字
 const submitPasswordButton = document.getElementById('submit-password'); // 上傳密碼
 const registerFingerprintButton = document.getElementById('register-fingerprint'); //註冊指紋按鈕
 const espMessages = document.getElementById('esp-messages'); //顯示訊息框
-const openfacepage = document.getElementById('face-page') // 開啟人臉辨識頁面
+const facetrain = document.getElementById('face-train') // 開啟人臉辨識頁面
 
 // Adafruit IO 配置
 const AIO_USERNAME = 'Nighttone';
@@ -109,8 +109,23 @@ registerFingerprintButton.addEventListener('click', async () => {
     alert('指紋註冊模式啟動！');
 });
 
-openfacepage.addEventListener('click', () => {
-    window.location.href = './face/index.html';
+// 訓練模型
+facetrain.addEventListener('click', async () => {
+    try {
+        const response = await fetch('https://face-recognition-app-nh3z.onrender.com/update_model', {
+            method: 'POST',
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        alert( `成功回應: ${JSON.stringify(result)}`);
+    } catch (error) {
+        alert( `請求失敗: ${error.message}` );
+    }
+
 });
 
 // 用來保存上一條訊息的時間
@@ -158,5 +173,6 @@ async function fetchDataAndUpdate() {
         console.error("資料取得錯誤：", error);
     }
 }
+
 // 可以設置定時器，定期查詢資料並更新顯示
 setInterval(fetchDataAndUpdate, 500); // 每 0.5 秒鐘查詢一次
