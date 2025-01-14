@@ -122,9 +122,6 @@ facetrain.addEventListener('click', async () => {
     alert('已發送人臉辨識註冊請求!');
 });
 
-// 用來保存上一條訊息的時間
-let lastMessageTime = null;
-
 // 函式：格式的時間轉換為 'MM/DD HH:mm:ss'
 function formatDate(isoString) {
     const date = new Date(isoString);
@@ -136,37 +133,50 @@ function formatDate(isoString) {
     
     return `${month}/${day} ${hours}:${minutes}:${seconds}`;
 }
+// 函式：格式化時間轉換為 'MM/DD HH:mm:ss'
+function formatDate(isoString) {
+    const date = new Date(isoString);
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // 月份從 0 開始，所以要加 1
+    const day = String(date.getDate()).padStart(2, '0'); // 確保天數是兩位數
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+    
+    return `${month}/${day} ${hours}:${minutes}:${seconds}`;
+}
 
-// ESP32訊息顯示
+let messageHistory = []; // 保存最新的 10 條訊息
+
+// 從 Adafruit IO 獲取資料並更新顯示
 async function fetchDataAndUpdate() {
     try {
-        // 假設這是從 Adafruit IO 或其他服務取得新資料
-        const response = await fetch(`${BASE_URL}/door-serial/data/last`, {
+        // 從 Adafruit IO 或其他服務取得新資料
+        const response = await fetch(`${BASE_URL}/door-serial/data`, {
             headers: {
                 'X-AIO-Key': AIO_KEY
             }
         });
         const data = await response.json();
 
-        // 假設從 response 中得到新的 value 和時間
-        const currentTime = data.updated_at; //獲取上傳時間
+        // 假設 `data` 是一個包含歷史訊息的陣列，最新的訊息在最前面
+        const messages = data.map(entry => ({
+            time: entry.created_at, // ISO 時間格式
+            value: entry.value
+        }));
 
-        // 判斷是否為新上傳的訊息
-        if (currentTime !== lastMessageTime) {
-            // 更新上一條訊息的時間
-            lastMessageTime = currentTime;
-            
-            const formattedTime = formatDate(currentTime);
+        // 合併歷史訊息並保留最新的 10 條
+        messageHistory = [...messages].slice(0,20);
+        messageHistory.reverse();
 
-            // 顯示新的訊息
-            espMessages.value += `${formattedTime} ESP32訊息: ${data.value}\n`;
-            espMessages.scrollTop = espMessages.scrollHeight; // 滾動到最底部顯示最新訊息
-        }
-
+        // 更新顯示
+        espMessages.value = messageHistory
+            .map(msg => `${formatDate(msg.time)} ESP32訊息: ${msg.value}`)
+            .join('\n');
+        espMessages.scrollTop = espMessages.scrollHeight; // 滾動到最底部顯示最新訊息
     } catch (error) {
         console.error("資料取得錯誤：", error);
     }
 }
 
-// 可以設置定時器，定期查詢資料並更新顯示
-setInterval(fetchDataAndUpdate, 500); // 每 0.5 秒鐘查詢一次
+// 設置定時器，每秒更新一次資料
+setInterval(fetchDataAndUpdate, 1000);
